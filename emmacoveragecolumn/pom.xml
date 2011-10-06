@@ -49,8 +49,8 @@
 	</pluginRepositories>
 
 	<scm>
-		<connection>scm:git:ssh://github.com/jenkinsci/emmacoveragecolumn.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/jenkinsci/emmacoveragecolumn.git</developerConnection>
-		<url>https://github.com/jenkinsci/emmacoveragecolumn</url>
+		<connection>scm:git:ssh://github.com/jenkinsci/emmacoveragecolumn-plugin.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/jenkinsci/emmacoveragecolumn-plugin.git</developerConnection>
+		<url>https://github.com/jenkinsci/emmacoveragecolumn-plugin</url>
 	</scm>
 </project>
