@@ -6,8 +6,6 @@ import hudson.model.Job;
 
 import java.math.BigDecimal;
 
-import jenkins.plugins.emmacoveragecolumn.EmmaColumn;
-
 import org.easymock.classextension.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,8 +45,9 @@ public class EmmaColumnTest {
 	}
 
 	@Test
-	public void testGetFillColor() throws Exception {
+	public void testGetFillColor100() throws Exception {
 		assertEquals("008B00", emmaColumn.getFillColor(BigDecimal.valueOf(100)));
 
 	}
+
 }
