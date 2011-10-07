@@ -6,7 +6,7 @@
 		<version>1.409</version>
 	</parent>
 
-	<artifactId>emmacoveragecolumn</artifactId>
+	<artifactId>emmacoveragecolumn-plugin</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<name>Emma Line Coverage Column</name>
 	<packaging>hpi</packaging>
