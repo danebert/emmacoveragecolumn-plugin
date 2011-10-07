@@ -7,7 +7,7 @@
 	</parent>
 
 	<artifactId>emmacoveragecolumn</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>Emma Line Coverage Column</name>
 	<packaging>hpi</packaging>
 	<url>http://wiki.jenkins-ci.org/display/JENKINS/Emma+Coverage+Column</url>
