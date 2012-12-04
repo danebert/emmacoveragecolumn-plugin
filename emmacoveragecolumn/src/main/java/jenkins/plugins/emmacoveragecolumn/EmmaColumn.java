@@ -31,7 +31,8 @@ public class EmmaColumn extends ListViewColumn {
 		final Run<?, ?> lastSuccessfulBuild = job.getLastSuccessfulBuild();
 		final StringBuilder stringBuilder = new StringBuilder();
 
-		if (lastSuccessfulBuild == null) {
+		if (lastSuccessfulBuild == null
+				|| lastSuccessfulBuild.getAction(EmmaBuildAction.class) == null) {
 			stringBuilder.append("N/A");
 		} else {
 			final Double percent = getLinePercent(lastSuccessfulBuild);
@@ -63,7 +64,9 @@ public class EmmaColumn extends ListViewColumn {
 	}
 
 	private Double getLinePercent(final Run<?, ?> lastSuccessfulBuild) {
-		final Float percentageFloat = getPercentageFloat(lastSuccessfulBuild);
+		final EmmaBuildAction action = lastSuccessfulBuild
+				.getAction(EmmaBuildAction.class);
+		final Float percentageFloat = getPercentageFloat(action);
 		final double doubleValue = percentageFloat.doubleValue();
 
 		final int decimalPlaces = 2;
@@ -75,9 +78,7 @@ public class EmmaColumn extends ListViewColumn {
 		return bigDecimal.doubleValue();
 	}
 
-	private Float getPercentageFloat(final Run<?, ?> lastSuccessfulBuild) {
-		final EmmaBuildAction action = lastSuccessfulBuild
-				.getAction(EmmaBuildAction.class);
+	private Float getPercentageFloat(final EmmaBuildAction action) {
 
 		final CoverageReport result = action.getResult();
 

@@ -2,11 +2,13 @@ package jenkins.plugins.emmacoveragecolumn;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import hudson.model.Build;
 import hudson.model.Job;
+import hudson.plugins.emma.EmmaBuildAction;
 
 import java.math.BigDecimal;
 
-import org.easymock.classextension.EasyMock;
+import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,6 +27,22 @@ public class EmmaColumnTest {
 		final Job<?, ?> mockJob = EasyMock.createMock(Job.class);
 		EasyMock.expect(mockJob.getLastSuccessfulBuild()).andReturn(null);
 		EasyMock.replay(mockJob);
+		assertEquals("N/A", emmaColumn.getPercent(mockJob));
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Test
+	public void testGetPercentWithNoAction() {
+		final Job mockJob = EasyMock.createMock(Job.class);
+		final Build mockLlastSuccessful = EasyMock.createMock(Build.class);
+
+		EasyMock.expect(mockJob.getLastSuccessfulBuild()).andReturn(
+				mockLlastSuccessful);
+
+		EasyMock.expect(mockLlastSuccessful.getAction(EmmaBuildAction.class))
+				.andReturn(null);
+
+		EasyMock.replay(mockJob, mockLlastSuccessful);
 		assertEquals("N/A", emmaColumn.getPercent(mockJob));
 	}
 
@@ -47,7 +65,5 @@ public class EmmaColumnTest {
 	@Test
 	public void testGetFillColor100() throws Exception {
 		assertEquals("008B00", emmaColumn.getFillColor(BigDecimal.valueOf(100)));
-
 	}
-
 }
